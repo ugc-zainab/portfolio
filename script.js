@@ -86,3 +86,63 @@ modal?.addEventListener('click', (e)=>{ if(e.target === modal) modal.close(); })
 
 // Année pied de page
 document.getElementById('year').textContent = new Date().getFullYear();
+// Gestion du formulaire avec popup
+const form = document.getElementById('contactForm');
+const successModal = document.getElementById('successModal');
+const closeModalBtn = document.getElementById('closeModal');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Empêche la soumission classique
+
+    const formData = new FormData(form);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    // Optionnel : désactiver le bouton pendant l'envoi
+    submitBtn.textContent = 'Envoi...';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/xjkezlgg', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Afficher la popup
+        successModal.style.display = 'flex';
+        form.reset(); // Réinitialise le formulaire
+      } else {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+        console.error('Erreur Formspree:', await response.text());
+      }
+    } catch (error) {
+      alert('Impossible d’envoyer le message. Vérifiez votre connexion.');
+      console.error('Erreur réseau:', error);
+    } finally {
+      // Réactiver le bouton
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+// Fermer la popup
+if (closeModalBtn) {
+  closeModalBtn.addEventListener('click', () => {
+    successModal.style.display = 'none';
+  });
+}
+
+// Fermer en cliquant en dehors
+if (successModal) {
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) {
+      successModal.style.display = 'none';
+    }
+  });
+}

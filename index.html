@@ -274,34 +274,34 @@
             </li>
           </ul>
         </div>
-        <form class="form reveal" action="https://formspree.io/f/xjkezlgg" method="POST">
-          <label>
-            <span class="translate-text" data-key="name_label">Votre nom</span>
-            <input name="name" required />
-          </label>
-          <label>
-            <span class="translate-text" data-key="email_label">Email</span>
-            <input name="email" type="email" required />
-          </label>
-          <label>
-            <span class="translate-text" data-key="brand_label">Marque / Société</span>
-            <input name="brand" />
-          </label>
-          <label>
-            <span class="translate-text" data-key="videos_label">NB Videos</span>
-            <select name="NB Videos">
-              <option value="1-3">1–3</option>
-              <option value="3-6">3–6</option>
-              <option value="6+">6+</option>
-            </select>
-          </label>
-          <label>
-            <span class="translate-text" data-key="project_details">Détails du projet</span>
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button class="btn btn--primary translate-text" data-key="send_button" type="submit">Envoyer</button>
-          <p class="micro translate-text" data-key="terms">En envoyant, vous acceptez d’être contacté(e) à propos de ce projet.</p>
-        </form>
+<form class="form reveal" id="contactForm" method="POST">
+  <label>
+    <span class="translate-text" data-key="name_label">Votre nom</span>
+    <input name="name" required />
+  </label>
+  <label>
+    <span class="translate-text" data-key="email_label">Email</span>
+    <input name="email" type="email" required />
+  </label>
+  <label>
+    <span class="translate-text" data-key="brand_label">Marque / Société</span>
+    <input name="brand" />
+  </label>
+  <label>
+    <span class="translate-text" data-key="videos_label">NB Videos</span>
+    <select name="NB Videos">
+      <option value="1-3">1–3</option>
+      <option value="3-6">3–6</option>
+      <option value="6+">6+</option>
+    </select>
+  </label>
+  <label>
+    <span class="translate-text" data-key="project_details">Détails du projet</span>
+    <textarea name="message" rows="4" required></textarea>
+  </label>
+  <button class="btn btn--primary translate-text" data-key="send_button" type="submit">Envoyer</button>
+  <p class="micro translate-text" data-key="terms">En envoyant, vous acceptez d’être contacté(e) à propos de ce projet.</p>
+</form>
       </div>
     </section>
   </main>
@@ -465,5 +465,13 @@
     // Initialiser la traduction
     translatePage(currentLang);
   </script>
+  <!-- Popup de confirmation -->
+<div id="successModal" class="modal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:2000; align-items:center; justify-content:center;">
+  <div style="background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; max-width:400px; text-align:center; color:var(--text);">
+    <h3 style="margin:0 0 12px 0; font-family:'Playfair Display', serif;">✅ Message envoyé !</h3>
+    <p>Merci pour votre message. Je vous répondrai sous 24h.</p>
+    <button id="closeModal" class="btn btn--primary" style="margin-top:16px;">Fermer</button>
+  </div>
+</div>
 </body>
 </html>
