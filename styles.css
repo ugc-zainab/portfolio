@@ -88,7 +88,7 @@ img{max-width:100%;display:block}
 /* About */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
 .about__card{position:relative;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--card);box-shadow:var(--shadow)}
-.about__card img{width:50%;height:20%;display:block}
+.about__card img{width:100%;height:auto;display:block}
 .about__badge{position:absolute;bottom:12px;left:12px;background:rgba(0,0,0,.5);backdrop-filter: blur(4px);padding:8px 12px;border-radius:999px;font-size:12px}
 .ticks{list-style:none;margin:12px 0 0 0;padding:0}
 .ticks li{position:relative;padding-left:22px;margin:10px 0;color:#cfd3e5}
